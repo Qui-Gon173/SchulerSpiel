@@ -1,4 +1,4 @@
-{
+animals_info = {
     "images": {
         "fish": "fish.svg",
         "worm": "worm.svg",
@@ -9,7 +9,7 @@
         "frog": "frog.svg",
         "bug": "RedBug.svg"
     },
-    "anumal-food-home-items": [
+    "anumal_food_home_items": [
         {
             "animal": "fish",
             "food": "worm",
