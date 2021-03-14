@@ -1,8 +1,16 @@
 img.svg {
     width: auto;
     height: 100px;
+    background-color: white;
 }
 
 div.line{
     margin: 50px 0 0 0;
+}
+
+body{
+    background-image: url("../img/stamp.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
