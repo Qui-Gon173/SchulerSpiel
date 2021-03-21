@@ -13,24 +13,30 @@ $(function () {
         return result;
     }
 
-    var $container = $('.container').first();
+    var animals_info = get_animals_info();
+
     var imgPath = "img/"
+
+    $('body').css('background-image', 'url("' + imgPath + animals_info.images.background + '")');
+
+    var $container = $('.container').first();
+
     var rowTemplate = `<div class="row line">
     <div class="col-md-4">
-        <img src="" class="svg" id="leftSide" />
+        <img src="" class="svg animal" id="leftSide" />
     </div >
     <div class="col-md-4 offset-4">
         <img src="" class="svg" id="rightSide" />
     </div>
 </div>`;
-    var count = animals_info.anumal_food_home_items.length;
+    var count = animals_info.anumal_food_items.length;
 
-    var animals = animals_info.anumal_food_home_items.map(function (item) {
+    var animals = animals_info.anumal_food_items.map(function (item) {
         return item.animal
     });
     var animalRandIndexes = randomIndexes(count);
 
-    var foods = animals_info.anumal_food_home_items.map(function (item) {
+    var foods = animals_info.anumal_food_items.map(function (item) {
         return item.food;
     });
     var foodRandIndexes = randomIndexes(count);
@@ -52,13 +58,47 @@ $(function () {
         $container.append($row);
     };
 
-    animals_info.anumal_food_home_items.forEach(function (item) {
+    animals_info.anumal_food_items.forEach(function (item) {
         Draggable.create("#" + item.food, {
             onDrag: function () {
-                if (this.hitTest("#" + item.animal)) {
-                    gsap.to(this.target, { duration: 0.6, opacity: 0, scale: 0, svgOrigin: "675 143" });
+                var animalId = "#" + item.animal;
+                if (this.hitTest(animalId)) {
+                    gsap.to(this.target,
+                        {
+                            duration: 0.6,
+                            opacity: 0,
+                            scale: 0,
+                            svgOrigin: "675 143",
+                            onComplete: function () {
+                                $(animalId).data("ate", true);
+                                check_ate();
+                            }
+                        }
+                    );
+
                 }
             }
         });
     });
+
+    var $animals = $('.container img.animal');
+    var anyHungry = true;
+
+    function check_ate() {
+        if ($animals.length != 0 && anyHungry) {
+            var ateAnimalsCount = $animals.filter(function () {
+                return !!$(this).data("ate");
+            }).length;
+
+            if ($animals.length == ateAnimalsCount) {
+                anyHungry = false;
+                $('#my-modal').modal('show');
+                /*
+                $('#myModal').on('hidden.bs.modal', function (e) {
+                // do something...
+                })
+                */
+            }
+        }
+    }
 });
