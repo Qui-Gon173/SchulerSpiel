@@ -10,7 +10,10 @@ function get_animals_info() {
             "frog": "frog.svg",
             "bug": "RedBug.svg",
 
-            "background": "stamp.jpg"
+            "background": "stamp.jpg",
+
+            "backsounds_off": "off.png",
+            "backsounds_on": "on.png",
         },
         "anumal_food_items": [
             {
@@ -29,6 +32,9 @@ function get_animals_info() {
                 "animal": "frog",
                 "food": "bug",
             }
-        ]
+        ],
+        "audio": {
+            "backsounds": "./audio/backsounds.mp3"
+        }
     }
 };

@@ -1,4 +1,6 @@
 $(function () {
+    var backsounds = null;
+
 
     var randomIndexes = function (count) {
         var array = [];
@@ -14,6 +16,11 @@ $(function () {
     }
 
     var animals_info = get_animals_info();
+    backsounds = new Audio(animals_info.audio.backsounds);
+    backsounds.volume = 0.5;
+    backsounds.loop = true;
+
+    var $back_sound_block = $("#back_sound_block").click(togleSound);
 
     var imgPath = "img/"
 
@@ -99,6 +106,16 @@ $(function () {
                 })
                 */
             }
+        }
+    }
+
+    function togleSound() {
+        if (backsounds.paused) {
+            $back_sound_block.find("img").attr('src', "img/" + animals_info.images.backsounds_on);
+            backsounds.play();
+        } else {
+            $back_sound_block.find("img").attr('src', "img/" + animals_info.images.backsounds_off);
+            backsounds.pause();
         }
     }
 });
