@@ -2,12 +2,13 @@ function get_animals_info() {
     return {
         "images": {
             "fish": "fish.svg",
-            "worm": "worm.svg",
             "tortoise": "tortoise.svg",
-            "snail": "snail.svg",
-            "salamandra": "salamandra.svg",
-            "mosqueto": "mosqueto.svg",
             "frog": "frog.svg",
+            "salamandra": "salamandra.svg",
+            
+            "worm": "worm.svg",
+            "mosqueto": "mosqueto.svg",
+            "snail": "snail.svg",
             "bug": "RedBug.svg",
 
             "background": "stamp.jpg",
@@ -15,7 +16,7 @@ function get_animals_info() {
             "backsounds_off": "off.png",
             "backsounds_on": "on.png",
         },
-        "anumal_food_items": [
+        "animal_food_items": [
             {
                 "animal": "fish",
                 "food": "worm",
@@ -34,7 +35,12 @@ function get_animals_info() {
             }
         ],
         "audio": {
-            "backsounds": "./audio/backsounds.mp3"
+            "backsounds": "backsounds.mp3",
+            
+            "fish": "fish_sound.mp3",
+            "tortoise": "tortoise_eats.mp3",
+            "frog": "frog_sound.mp3",
+            "salamandra": "triton_sound.mp3",
         }
     }
 };
