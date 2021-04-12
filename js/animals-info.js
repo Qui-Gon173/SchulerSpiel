@@ -10,6 +10,11 @@ function get_animals_info() {
             "mosqueto": "mosqueto.svg",
             "snail": "snail.svg",
             "bug": "RedBug.svg",
+            
+            "water": "water.png",
+            "slime": "slime.png",
+            "reeds": "reeds.png",
+            "grass": "grass.png",
 
             "background": "stamp.jpg",
 
@@ -20,18 +25,22 @@ function get_animals_info() {
             {
                 "animal": "fish",
                 "food": "worm",
+                "home": "water"
             },
             {
                 "animal": "tortoise",
                 "food": "snail",
+                "home": "reeds"
             },
             {
                 "animal": "salamandra",
                 "food": "mosqueto",
+                "home": "grass"
             },
             {
                 "animal": "frog",
                 "food": "bug",
+                "home": "slime"
             }
         ],
         "audio": {

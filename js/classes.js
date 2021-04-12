@@ -26,6 +26,7 @@ function Dropping(id, image) {
 function Catcher(id, image, droppingId) {
     var _this = this;
     _this.id = id;
+    _this.droppingId = droppingId;
     _this.$obj = $('<div class="col-md-4">'
               + '<img src="' + ImagePath(image) + '" class="svg animal" id="' + id + '" />'
               + '</div >');
@@ -73,10 +74,13 @@ function Container($container) {
     var _this = this;
 
     _this.$container = $container;
+    _this.$container.hide();
+
     _this.items = [];
-    _this.append = function (item) {
-        _this.items.push(item);
-        _this.$container.append(item.$obj);
+    _this.append = function (catcher,dropping) {
+        var line=new ContainerItem(catcher, dropping);
+        _this.items.push(line);
+        _this.$container.append(line.$obj);
     };
     _this.caughtCount = function () {
         return _this.items.filter(function (val) {
@@ -86,6 +90,17 @@ function Container($container) {
     _this.init = function () {
         _this.items.forEach(function (val) {
             val.catcher.init();
+        });
+    }
+    _this.show = function(){
+        _this.$container.slideDown("slow");
+    };
+    _this.hide = function(onCompleted){
+        _this.$container.slideUp("slow",onCompleted);
+    }
+    this.clear = function(){
+        _this.items.forEach(function(el){
+            el.$obj.remove();
         });
     }
 }
